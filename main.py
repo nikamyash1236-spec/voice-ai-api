@@ -4,6 +4,9 @@ import base64
 import random
 
 app = FastAPI()
+@app.get("/")
+def read_root():
+    return {"message": "Voice AI API is live!"}
 
 API_KEY = "test123"
 
