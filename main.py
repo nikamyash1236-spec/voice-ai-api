@@ -10,10 +10,16 @@ def read_root():
 
 API_KEY = "test123"
 
+from pydantic import BaseModel, Field
+
 class VoiceRequest(BaseModel):
     language: str
-    audio_format: str
-    audio_base64: str
+    audio_format: str = Field(..., alias="audioFormat")
+    audio_base64: str = Field(..., alias="audioBase64")
+
+    class Config:
+        populate_by_name = True
+
 
 @app.post("/detect-voice")
 def detect_voice(
