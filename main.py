@@ -32,7 +32,7 @@ def detect_voice(
     try:
         audio_bytes = base64.b64decode(data.audio_base64, validate=True)
         audio_size = len(audio_bytes)
-        if audio_size < 1000:
+        if audio_size < 10:
             raise ValueError("Audio too short")
     except Exception:
         raise HTTPException(status_code=400, detail="Invalid audio input")
